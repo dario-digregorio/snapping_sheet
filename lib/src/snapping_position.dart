@@ -53,8 +53,8 @@ class SnappingPosition {
     this.snappingCurve = Curves.ease,
     this.snappingDuration = const Duration(milliseconds: 250),
     this.grabbingContentOffset = GrabbingContentOffset.middle,
-  })  : this._positionPixel = positionPixels,
-        this._positionFactor = null;
+  })  : this.positionPixel = positionPixels,
+        this.positionFactor = null;
 
   /// Creates a snapping position that is given a positionFactor
   /// [positionFactor]: 1 = Full size; 0 = Smallest size. Can be bigger than 1
@@ -64,8 +64,8 @@ class SnappingPosition {
     this.snappingCurve = Curves.easeOutSine,
     this.snappingDuration = const Duration(milliseconds: 250),
     this.grabbingContentOffset = GrabbingContentOffset.middle,
-  })  : this._positionPixel = null,
-        this._positionFactor = positionFactor;
+  })  : this.positionPixel = null,
+        this.positionFactor = positionFactor;
 
   double getPositionInPixels(double maxHeight, double grabbingHeight) {
     var centerPosition = this._getCenterPositionInPixels(maxHeight);
@@ -74,13 +74,13 @@ class SnappingPosition {
   }
 
   double _getCenterPositionInPixels(double maxHeight) {
-    if (this._positionPixel != null) return this._positionPixel!;
-    return this._positionFactor! * maxHeight;
+    if (this.positionPixel != null) return this.positionPixel!;
+    return this.positionFactor! * maxHeight;
   }
 
   bool operator ==(other) =>
       other is SnappingPosition &&
-      other._positionFactor == this._positionFactor &&
-      other._positionPixel == this._positionPixel;
-  int get hashCode => _positionFactor.hashCode ^ _positionPixel.hashCode;
+      other.positionFactor == this.positionFactor &&
+      other.positionPixel == this.positionPixel;
+  int get hashCode => positionFactor.hashCode ^ positionPixel.hashCode;
 }
