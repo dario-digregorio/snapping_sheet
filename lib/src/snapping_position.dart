@@ -14,8 +14,8 @@ class GrabbingContentOffset {
 }
 
 class SnappingPosition {
-  final double? _positionPixel;
-  final double? _positionFactor;
+  final double? positionPixel;
+  final double? positionFactor;
 
   /// The snapping position alignment regarding the grabbing content.
   ///
