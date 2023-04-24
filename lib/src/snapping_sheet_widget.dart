@@ -187,12 +187,14 @@ class _SnappingSheetState extends State<SnappingSheet>
     });
 
     Future.delayed(Duration(seconds: 0)).then((value) {
-      setState(() {
-        _currentPosition = _initSnappingPosition.getPositionInPixels(
-          sheetSize,
-          widget.grabbingHeight,
-        );
-      });
+      if (mounted) {
+        setState(() {
+          _currentPosition = _initSnappingPosition.getPositionInPixels(
+            sheetSize,
+            widget.grabbingHeight,
+          );
+        });
+      }
     });
 
     if (widget.controller != null) {
